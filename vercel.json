@@ -1,16 +1,10 @@
 {
-  "hosting": {
-    "public": "public",
-    "ignore": [
-      "vercel.json",
-      "**/.*",
-      "**/node_modules/**"
+    "version": 2,
+    "builds": [
+      { "src": "public/**/*", "use": "@vercel/static" }
     ],
-    "rewrites": [
-      {
-        "source": "/**",
-        "destination": "/index.html"
-      }
+    "routes": [
+      { "src": "/(.*)", "dest": "/public/$1" }
     ]
   }
-}
+  
