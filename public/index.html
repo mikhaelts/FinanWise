@@ -34,9 +34,8 @@
                 signInWithEmailAndPassword(auth, email, password)
                     .then((userCredential) => {
                         // Login bem-sucedido
-                        const user = userCredential.user;
-                        console.log('Usuário logado:', user);
-                        // Redirecionar para a página principal ou dashboard
+                        console.log('Usuário logado:', userCredential.user);
+                        // Redirecionar para a página da dashboard
                         window.location.href = 'dashboard.html';
                     })
                     .catch((error) => {
@@ -59,7 +58,7 @@
                 <button type="submit">Entrar</button>
             </form>
             <div class="signup">
-                <p>Ainda não tem conta? <a href="#">Cadastrar</a></p>
+                <p>Ainda não tem conta? <a href="signup.html">Cadastrar</a></p>
             </div>
         </div>
         <div class="right">
