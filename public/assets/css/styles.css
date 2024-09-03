@@ -1,0 +1,162 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #121212; /* Tema dark */
+}
+
+.container {
+    display: flex;
+    height: 100vh; /* Ocupa 100% da altura da tela */
+    width: 100vw; /* Ocupa 100% da largura da tela */
+    overflow: hidden;
+}
+
+.left {
+    flex: 1;
+    background-color: #1e1e1e; /* Tema dark */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+    order: 1; /* Faz o .left aparecer à esquerda */
+}
+
+.right {
+    flex: 1;
+    background: url('../images/fundofin.png') no-repeat center center/cover;
+    position: relative;
+    order: 2; /* Faz o .right aparecer à direita */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px; /* Ajuste para maior largura em telas grandes */
+}
+
+input {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    width: 100%;
+    background-color: #2c2c2c; /* Cor de fundo dos inputs */
+    color: #fff; /* Cor do texto dos inputs */
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #279b48;
+    color: #fff;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #279b48;
+}
+
+.signup {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.signup a {
+    color: #279b48;
+    text-decoration: none;
+}
+
+.signup a:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+    
+    .logo {
+        width: 80px;
+        margin-top: 0px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    form {
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .left, .right {
+        height: 50vh;
+    }
+
+    .logo {
+        width: 70px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    form {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 60px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    input, button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .signup {
+        font-size: 12px;
+    }
+}

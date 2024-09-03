@@ -1,0 +1,496 @@
+/* Variáveis de cores */
+:root {
+  --dark-background: #1e1e1e;
+  --dark-text: #ffffff;
+  --light-background: #f4f4f4;
+  --light-text: #333333;
+  --primary-color: #333;
+  --secondary-color: #555;
+  --button-background: #279b48; /* verde para botões */
+  --button-text: #fff;
+  --highlight-color: #187132; /* Azul escuro para destaque de botão */
+}
+
+/* Estilo base */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--dark-background);
+  color: var(--dark-text);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Container */
+.container {
+  background: var(--dark-background);
+  color: var(--dark-text);
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 1200px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Cabeçalho */
+/* Estilização do cabeçalho */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Alinha logo e botão em extremos opostos */
+  background-color: #333;
+  border-radius: 15px;
+  color: #fff;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header .logo {
+  height: 70px; /* Ajuste a altura da logo conforme necessário */
+}
+
+header .btn {
+  background-color: #555;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+header .btn:hover {
+  background-color: #777;
+}
+
+
+
+
+.btn {
+  background-color: var(--button-background);
+  color: var(--button-text);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--highlight-color);
+  color: var(--button-text);
+}
+
+/* Estilo do botão de seleção do mês */
+#month {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  background-color: var(--dark-background);
+  color: var(--dark-text);
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+#month:focus {
+  border-color: var(--highlight-color);
+  outline: none;
+}
+
+/* Estilo dos meses no calendário */
+.calendar-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.calendar-card div {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.calendar-card div:hover {
+  background-color: var(--highlight-color);
+  color: var(--dark-text);
+}
+
+.calendar-card .active {
+  background-color: var(--highlight-color);
+  color: var(--dark-text);
+}
+
+/* Outras seções e estilo do formulário */
+.balance {
+  text-align: center;
+}
+
+.balance p {
+  font-size: 2rem;
+  margin: 10px 0;
+}
+
+.income-expense {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.income-expense div {
+  flex: 1;
+  text-align: center;
+}
+
+.money.plus {
+  color: green;
+}
+
+.money.minus {
+  color: red;
+}
+
+/* Estilo do formulário */
+.form-control {
+  margin: 10px 0;
+}
+
+input[type="text"], 
+input[type="number"], 
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  background-color: var(--dark-background); /* Cor de fundo do tema */
+  color: var(--dark-text); /* Cor do texto do tema */
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus, 
+input[type="number"]:focus, 
+select:focus {
+  border-color: var(--highlight-color);
+  outline: none;
+}
+
+/* Lista */
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  
+}
+
+.list li {
+  display: flex;
+  
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border-right: 5px solid;
+  position: relative; /* Adiciona contexto para o posicionamento absoluto */
+}
+
+.list li .icon {
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+.list li .category {
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+  margin-left:auto;
+  font-style: italic;
+}
+
+.list li.minus {
+  border-color: red;
+}
+
+.list li.plus {
+  border-color: green;
+}
+
+/* Filtro de categorias */
+.filter-container {
+  margin: 20px 0;
+}
+
+.filter-container select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  background-color: var(--dark-background); /* Cor de fundo do tema */
+  color: var(--dark-text); /* Cor do texto do tema */
+  box-sizing: border-box;
+}
+
+.filter-container select:focus {
+  border-color: var(--highlight-color);
+  outline: none;
+}
+
+/* Modo escuro */
+body.dark-mode {
+  background-color: var(--dark-background);
+  color: var(--dark-text);
+}
+
+body.dark-mode .container {
+  background-color: var(--dark-background);
+  color: var(--dark-text);
+}
+
+body.dark-mode .btn {
+  background-color: var(--button-background);
+  color: var(--button-text);
+}
+
+body.dark-mode .filter-container select {
+  background-color: var(--dark-background);
+  color: var(--dark-text);
+}
+
+/* Modo claro */
+body.light-mode {
+  background-color: var(--light-background);
+  color: var(--light-text);
+}
+
+body.light-mode .container {
+  background-color: var(--light-background);
+  color: var(--light-text);
+}
+
+body.light-mode .btn {
+  background-color: var(--button-background);
+  color: var(--button-text);
+}
+
+body.light-mode .filter-container select {
+  background-color: var(--light-background); /* Cor de fundo para o tema claro */
+  color: var(--light-text); /* Cor do texto para o tema claro */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Container */
+.container {
+  background: var(--dark-background);
+  color: var(--dark-text);
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 1200px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Cards de Saldo, Receitas e Despesas */
+.income-expense {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.income-expense > div {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.income-expense > div:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+/* Estilizando o card de saldo */
+.balance {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s, transform 0.3s;
+  margin-bottom: 20px;
+}
+
+.balance:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+.balance-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.balance-card #balance {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+#toggle-balance {
+  font-size: 1.2rem;
+  margin-left: 10px;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Ocultar e mostrar o saldo */
+.hidden-balance {
+  color: transparent;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo do texto dentro dos cards de receita e despesa */
+.income-expense h3 {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.income-expense .money {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+
+
+
+
+.money.plus {
+  color: #28a745; /* Verde para receitas */
+}
+
+.money.minus {
+  color: #dc3545; /* Vermelho para despesas */
+}
+ /* Estiliza o botão de exclusão para remover qualquer fundo */
+ .delete-btn {
+  background: none;  /* Remove o fundo do botão */
+  border: none;      /* Remove a borda */
+  cursor: pointer;   /* Define o cursor como pointer para indicar que é clicável */
+  padding: 0;        /* Remove o preenchimento interno */
+  margin-left: 10px; /* Adiciona espaço à esquerda do ícone de lata de lixo */
+}
+
+/* Estiliza o ícone de lata de lixo */
+.delete-btn .fa-trash-alt {
+  color: red;        /* Define a cor vermelha do ícone */
+  font-size: 20px;   /* Define o tamanho do ícone, ajuste conforme necessário */
+}
+
+/* Estiliza o item da lista */
+.list-item {
+  display: flex;
+  justify-content: space-between; /* Espaça o conteúdo para os extremos */
+  align-items: center;            /* Alinha verticalmente o conteúdo ao centro */
+  padding: 10px 0;                /* Adiciona um pouco de padding para espaço interno */
+  border-bottom: 1px solid #ddd;  /* Adiciona uma borda inferior para separação */
+}
+
+/* Estiliza o texto e a categoria */
+.list-item span {
+  margin-left: 20px; /* Espaço entre o texto e o ícone da categoria */
+  color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.chart-container {
+  margin-top: 20px;
+}
+
+.chart-container canvas {
+  max-width: 100%;
+}

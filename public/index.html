@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistema de Finanças</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- Adicione os SDKs do Firebase -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+
+        // Sua configuração do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyA8JISrdYGURqlEitwjhuQ3Tp74ClnJlNg",
+            authDomain: "finanwise-6e27e.firebaseapp.com",
+            projectId: "finanwise-6e27e",
+            storageBucket: "finanwise-6e27e.appspot.com",
+            messagingSenderId: "18762139497",
+            appId: "1:18762139497:web:40efe768a33a5cfb181ff8"
+        };
+
+        // Inicialize o Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('login-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        // Login bem-sucedido
+                        const user = userCredential.user;
+                        console.log('Usuário logado:', user);
+                        // Redirecionar para a página principal ou dashboard
+                        window.location.href = 'dashboard.html';
+                    })
+                    .catch((error) => {
+                        // Tratamento de erros
+                        console.error('Erro de login:', error.message);
+                        alert('Erro ao fazer login: ' + error.message);
+                    });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <img src="../images/logofin.png" alt="Logo" class="logo">
+            <h1>Bem-vindo ao Sistema de Finanças</h1>
+            <form id="login-form">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Senha" required>
+                <button type="submit">Entrar</button>
+            </form>
+            <div class="signup">
+                <p>Ainda não tem conta? <a href="#">Cadastrar</a></p>
+            </div>
+        </div>
+        <div class="right">
+            <div class="overlay"></div>
+        </div>
+    </div>
+</body>
+</html>
