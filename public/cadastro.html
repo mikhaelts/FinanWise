@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="assets/css/cadastro.css">
+    
+</head>
+<body>
+
+    <div class="container">
+        <img src="assets/images/logofin.png" alt="Logo">
+        <h2>Cadastrar</h2>
+        <div id="error-message" class="error"></div>
+        <form id="signup-form">
+            <input type="text" id="name" placeholder="Nome Completo" required>
+            <input type="email" id="email" placeholder="E-mail" required>
+            <input type="password" id="password" placeholder="Senha" required>
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+
+    <script type="module">
+        // Importando os módulos do Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+
+        // Configuração do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyA8JISrdYGURqlEitwjhuQ3Tp74ClnJlNg",
+            authDomain: "finanwise-6e27e.firebaseapp.com",
+            databaseURL: "https://finanwise-6e27e-default-rtdb.firebaseio.com",
+            projectId: "finanwise-6e27e",
+            storageBucket: "finanwise-6e27e.appspot.com",
+            messagingSenderId: "18762139497",
+            appId: "1:18762139497:web:40efe768a33a5cfb181ff8"
+        };
+
+        // Inicializando o Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Referenciando o formulário
+        const signupForm = document.getElementById('signup-form');
+        const errorMessage = document.getElementById('error-message');
+
+        // Manipulando o envio do formulário de cadastro
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Criando um novo usuário com email e senha
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Usuário registrado com sucesso
+                    const user = userCredential.user;
+
+                    // Atualizando o perfil do usuário com o nome fornecido
+                    updateProfile(auth.currentUser, {
+                        displayName: name
+                    }).then(() => {
+                        // Perfil atualizado com sucesso
+                        console.log('Usuário registrado e perfil atualizado:', user);
+
+                        // Armazenar mensagem de sucesso e redirecionar para a tela de login
+                        localStorage.setItem('signupSuccessMessage', 'Usuário cadastrado com sucesso!');
+                        window.location.href = 'index.html'; // Redirecionar para a página de login
+                    }).catch((error) => {
+                        console.error('Erro ao atualizar o perfil:', error);
+                        errorMessage.textContent = error.message;
+                    });
+                })
+                .catch((error) => {
+                    // Exibindo erros de cadastro
+                    console.error('Erro ao registrar usuário:', error);
+                    errorMessage.textContent = error.message;
+                });
+        });
+    </script>
+
+</body>
+</html>

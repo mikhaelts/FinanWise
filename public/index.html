@@ -58,7 +58,7 @@
                 <button type="submit">Entrar</button>
             </form>
             <div class="signup">
-                <p>Ainda não tem conta? <a href="signup.html">Cadastrar</a></p>
+                <p>Ainda não tem conta? <a href="cadastro.html">Cadastrar</a></p>
             </div>
         </div>
         <div class="right">
@@ -67,3 +67,13 @@
     </div>
 </body>
 </html>
+
+<script type="module">
+    // Verifica se há uma mensagem de sucesso no localStorage
+    const successMessage = localStorage.getItem('signupSuccessMessage');
+
+    if (successMessage) {
+        alert(successMessage); // Exibe a mensagem como um alerta
+        localStorage.removeItem('signupSuccessMessage'); // Remove a mensagem do localStorage após exibir
+    }
+</script>
