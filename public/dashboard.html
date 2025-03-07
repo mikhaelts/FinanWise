@@ -519,7 +519,7 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
     // Se o usuário estiver autenticado
     const userName = user.displayName || 'Usuário'; // Caso o nome não esteja disponível
-    document.getElementById("user-name").innerText = userName; // Exibe o nome
+    const userNameElement = document.getElementById("user-name"); // Exibe o nome
   } else {
     // Se não houver usuário autenticado
     document.getElementById("user-name").innerText = "Usuário";
