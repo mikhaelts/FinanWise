@@ -26,6 +26,9 @@
       <header>
         <img src="assets/images/logofin.png" alt="Logo" class="logo" />
         <button id="theme-toggle" class="btn" aria-label="Alternar tema">Mudar Tema</button>
+        <div id="user-greeting">
+          <span>Olá, <span id="user-name">Usuário</span></span>
+        </div>
       </header>
 
       <main class="main-content">
@@ -506,6 +509,23 @@
 
     
   });
+
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+
+
+
+// Verifica o estado de autenticação do usuário
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // Se o usuário estiver autenticado
+    const userName = user.displayName || 'Usuário'; // Caso o nome não esteja disponível
+    document.getElementById("user-name").innerText = userName; // Exibe o nome
+  } else {
+    // Se não houver usuário autenticado
+    document.getElementById("user-name").innerText = "Usuário";
+  }
+});
+
 </script>
 
   </body>
