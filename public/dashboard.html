@@ -26,9 +26,6 @@
       <header>
         <img src="assets/images/logofin.png" alt="Logo" class="logo" />
         <button id="theme-toggle" class="btn" aria-label="Alternar tema">Mudar Tema</button>
-        <div id="user-greeting">
-          <span>Olá, <span id="user-name">Usuário</span></span>
-        </div>
       </header>
 
       <main class="main-content">
@@ -506,18 +503,7 @@
       const database = getDatabase(app);
       // O restante do código do dashboard continua aqui...
     }
-
-    // Quando o estado de autenticação mudar (ex: usuário logado ou deslogado)
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // Usuário logado, exibe o nome
-    const userName = user.displayName || "Usuário"; // Usa o nome de exibição, ou 'Usuário' como padrão
-    document.getElementById("user-name").innerText = userName;
-  } else {
-    // Usuário não está logado
-    document.getElementById("user-name").innerText = "Usuário";
-  }
-});
+    
 
     
   });
