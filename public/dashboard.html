@@ -485,5 +485,27 @@
       });
     </script>
 
+<script type="module">
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+
+  // Inicializar o Firebase Authentication
+  const auth = getAuth();
+
+  // Verificar se o usuário está autenticado
+  onAuthStateChanged(auth, (user) => {
+    if (!user) {
+      // Redirecionar para a página de login se o usuário não estiver autenticado
+      window.location.href = '/login.html'; // Coloque o caminho correto para sua página de login
+    } else {
+      console.log('Usuário autenticado:', user.email);
+      // Aqui você pode inicializar ou carregar o conteúdo do dashboard após a verificação
+      // Exemplo de inicialização do Firebase Database
+      const database = getDatabase(app);
+      // O restante do código do dashboard continua aqui...
+    }
+  });
+</script>
+
+
   </body>
 </html>
