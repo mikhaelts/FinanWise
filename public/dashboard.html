@@ -507,24 +507,23 @@
       // O restante do código do dashboard continua aqui...
     }
 
-    
-  });
-
-  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
-
-
-
-// Verifica o estado de autenticação do usuário
+    // Quando o estado de autenticação mudar (ex: usuário logado ou deslogado)
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    // Se o usuário estiver autenticado
-    const userName = user.displayName || 'Usuário'; // Caso o nome não esteja disponível
-    const userNameElement = document.getElementById("user-name"); // Exibe o nome
+    // Usuário logado, exibe o nome
+    const userName = user.displayName || "Usuário"; // Usa o nome de exibição, ou 'Usuário' como padrão
+    document.getElementById("user-name").innerText = userName;
   } else {
-    // Se não houver usuário autenticado
+    // Usuário não está logado
     document.getElementById("user-name").innerText = "Usuário";
   }
 });
+
+    
+  });
+
+
+
 
 </script>
 
