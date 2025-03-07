@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Sistema de Finanças</title>
     <link rel="stylesheet" href="assets/css/styles.css">
-    <!-- Adicione os SDKs do Firebase -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
 
-        // Sua configuração do Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyA8JISrdYGURqlEitwjhuQ3Tp74ClnJlNg",
             authDomain: "finanwise-6e27e.firebaseapp.com",
@@ -20,7 +18,6 @@
             appId: "1:18762139497:web:40efe768a33a5cfb181ff8"
         };
 
-        // Inicialize o Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
 
@@ -34,15 +31,11 @@
 
                 signInWithEmailAndPassword(auth, email, password)
                     .then((userCredential) => {
-                        // Login bem-sucedido
-                        console.log('Usuário logado:', userCredential.user);
-                        window.location.href = 'dashboard.html'; // Redireciona para a dashboard
+                        window.location.href = 'dashboard.html'; // Redireciona para o dashboard após login bem-sucedido
                     })
                     .catch((error) => {
-                        // Exibe a mensagem de erro em vermelho
                         errorMessage.textContent = 'Credenciais Incorretas';
-                        errorMessage.style.display = 'block'; // Mostra a mensagem de erro
-                        console.error('Erro de login:', error.message);
+                        errorMessage.style.display = 'block'; 
                     });
             });
         });
@@ -58,7 +51,7 @@
                 <input type="password" id="password" placeholder="Senha" required>
                 <button type="submit">Entrar</button>
             </form>
-            <div id="error-message" class="error-message"></div> <!-- Div para a mensagem de erro -->
+            <div id="error-message" class="error-message"></div>
             <div class="signup">
                 <p>Ainda não tem conta? <a href="cadastro.html">Cadastrar</a></p>
             </div>
@@ -67,15 +60,5 @@
             <div class="overlay"></div>
         </div>
     </div>
-
-    <script type="module">
-        // Verifica se há uma mensagem de sucesso no localStorage
-        const successMessage = localStorage.getItem('signupSuccessMessage');
-
-        if (successMessage) {
-            alert(successMessage); // Exibe a mensagem como um alerta
-            localStorage.removeItem('signupSuccessMessage'); // Remove a mensagem do localStorage após exibir
-        }
-    </script>
 </body>
 </html>

@@ -494,3 +494,129 @@ body.light-mode .filter-container select {
 .chart-container canvas {
   max-width: 100%;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.year-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.year-item {
+  padding: 5px 10px;
+  background: #2c3e50;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.year-item:hover,
+.year-item.active {
+  background: #3498db;
+}
+
+
+
+
+
+
+
+
+/* Estilos extras para a seção de anos */
+
+.year-section {
+  background: linear-gradient(135deg, #333,#333);
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  color: #fff;
+}
+.year-section h2 {
+  font-size: 1.4em;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.year-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.year-item {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  font-weight: bold;
+}
+.year-item:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}
+.year-item.active {
+  background: #fff;
+  color: #279b48;
+}
+/* Estilização extra para o botão de edição (no item da transação) */
+.edit-btn, .delete-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-left: 5px;
+}
+.edit-btn i {
+  color: #2193b0;
+}
