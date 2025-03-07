@@ -495,7 +495,7 @@
   onAuthStateChanged(auth, (user) => {
     if (!user) {
       // Redirecionar para a página de login se o usuário não estiver autenticado
-      window.location.href = '/login.html'; // Coloque o caminho correto para sua página de login
+      window.location.href = 'index.html'; // Coloque o caminho correto para sua página de login
     } else {
       console.log('Usuário autenticado:', user.email);
       // Aqui você pode inicializar ou carregar o conteúdo do dashboard após a verificação
@@ -505,6 +505,8 @@
     }
   });
 </script>
+
+
 
 
   </body>
